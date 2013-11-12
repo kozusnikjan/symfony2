@@ -110,10 +110,10 @@ stof_doctrine_extensions:
 # Swiftmailer Configuration
 swiftmailer:
       transport:            smtp
-      username:             info@poridsiweb.cz
-      password:             w48565_1994
-      host:                 smtp-48565.m65.wedos.net
-      port:                 465
+      username:             
+      password:             
+      host:                 
+      port:                 
       encryption:           ssl
  
 
