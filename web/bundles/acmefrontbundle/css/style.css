@@ -1,0 +1,316 @@
+/* 
+    Document   : style
+    Created on : 18.9.2013, 18:14:21
+    Author     : Jan
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+body {
+    margin: 0;
+    font-family: Open Sans;
+    color: #fff;
+}
+img {
+    border: none;
+}
+.left {
+    float: left;
+}
+.right {
+    float: right;
+}
+.clear {
+    clear: both;
+}
+a {
+    text-decoration: none;
+    color: #00a284;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+
+form input[type='text'], form input[type='email'], form textarea{
+    border: none;
+    border-bottom: 2px solid #ff6600;
+    font-family: Open Sans;
+    /*padding-bottom: 5px;*/
+}
+form input[type='text'], form input[type='email'] {
+    height: 25px;
+}
+form textarea{
+    resize: none;
+    height: 75px;
+}
+form input[type='submit'], form button[type='submit']{
+    border: none;
+    color: #fff;
+    padding: 5px 10px;
+    text-transform: uppercase;
+    background: #ff6600;
+}
+form input[type='submit']:hover, form button[type='submit']:hover{
+    cursor: pointer;
+    color: #fff;
+    text-decoration: underline;
+    background: #ff6600;
+}
+form fieldset {
+    border: none;
+}
+
+#contentTop, .content, #moreArrow {
+    margin: 0 auto;
+}
+
+#contentTop, .content {
+    width: 940px;
+}
+#wrapperTop, #wrapper {
+    width: 100%;
+}
+
+#wrapperTop{
+    background: url(../images/imgTop.jpg) #3a4e63 no-repeat top center;
+    height: 667px;
+}
+#header {
+    padding-top: 50px;
+}
+#logo {
+    
+}
+#nav {
+    margin-top: 8px;
+}
+#nav ul {
+    list-style-type: none;
+    padding-left: 0px;
+    padding-top: 0px;
+}
+#nav li {
+    display: inline;
+    padding-left: 25px;
+}
+#nav li.first {
+    padding-left: 0px;
+}
+#nav a {
+    color: #fff;
+    text-decoration: none;
+    border-bottom: 2px solid #fff;
+}
+#nav a:hover {
+    color: #ff6600;
+    border-color: #ff6600;
+}
+
+#topText {
+    margin-top: 60px;
+}
+.textSeparator {
+    height: 6px;
+    width: 600px;
+    background: #686e71;
+}
+#bigText {
+    font-size: 24px;
+    font-weight: bold;
+    padding-bottom: 35px;
+}
+#normalText {
+    padding-top: 35px;
+}
+
+/*
+#ebook
+*/
+#ebook {
+    margin-top: 20px;
+}
+#ebook form {
+    width: 475px;
+}
+#ebook form input[type='text'], #ebook form input[type='email']{
+    border: 1px solid #3a4e63;
+    height: 30px;
+    width: 220px;
+    padding-left: 5px;
+    color: #fff;
+    background: url(../images/bgOpacity10.png);
+    float: left;
+    margin-right: 5px;
+}
+#ebook form input[type='submit']{
+    margin-top: 5px;
+    font-size: 18px;
+}
+#ebook #info {
+     font-size: 10px;
+     width: 460px;
+}
+/* 
+konec #ebook
+*/
+
+#moreArrow {
+    background: url(../images/arrowDown.png) center top no-repeat;
+    margin-top: 50px;
+    width: 90px;
+    height: 64px;
+    text-align: center;
+    line-height: 50px;
+    font-size: 20px;
+    text-transform: uppercase;
+    }
+    
+    
+#wrapper {
+    border-top: 3px solid #e0e0e0;
+    background: url(../images/stripe.png);
+    } 
+#wrapper .item h2:first-letter {
+        color: #ff6600;
+    }    
+.item {
+        margin-bottom: 50px;
+        margin-top: 60px;
+    }
+    
+    
+.content {
+        color: #686e71;
+    }  
+.content.oneColumn .column {
+    width: 940px;   
+    }
+.content.oneColumn .column .box {
+        width: 420px;   /* padding-left + padding-right = 40px navic se pricte */
+    }  
+.content.oneColumn .column .box img {
+        width: 420px;  
+    }      
+    
+.content.twoColumns .column {
+        width: 420px;   /* padding-left + padding-right = 40px navic se pricte */
+    }    
+.content.twoColumns .column img{
+        width: 420px;
+    }      
+    
+.content.threeColumns .column {
+        width: 260px;   /* padding-left + padding-right = 40px navic se pricte */
+    }   
+.content.threeColumns .column img{
+        width: 260px;
+    }    
+    
+.content .column {
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: 20px;
+        padding-top: 20px;
+        background: #fff;
+        font-size: 14px;
+        line-height: 22px;
+    }   
+.content .column.noBg {
+        background: none;
+    }    
+.content .column img {
+        margin-bottom: -25px;
+    }    
+.content .column h3 {
+        margin-top: 0px;
+        color: #00a284;
+        font-size: 20px;
+    }
+.content .column h3 a{
+        color: #00a284;
+        text-decoration: none;
+    } 
+.content .column h3 a:hover {
+        text-decoration: underline;
+    }    
+
+    
+    
+/* #kontakt */
+#kontakList, #kontaktForm {
+    position: relative;
+    /*top: -25px;*/
+}
+
+#kontaktList span.highlight {
+        color: #00a284;
+    }    
+#kontaktList ul {
+        list-style-type: none;
+        padding-left: 0px;
+        margin-top: 0px;
+        text-transform: uppercase;
+        font-size: 24px;
+        color: #ff6600;
+    }    
+#kontaktList li {
+        margin-bottom: 5px;
+    }    
+#kontaktList .textSeparator {
+        background: #00a284;
+    }    
+
+#kontaktForm {
+    /*background-color: red;*/
+    }    
+/*    #kontaktForm form {
+        position: relative;
+        top: -25px;
+    }    */
+#kontaktForm form input[type='text'], #kontaktForm input[type='email'], #kontaktForm textarea{
+        width: 420px;
+        margin-bottom: 20px;
+}   
+#kontaktForm form input[type='submit'], form button[type='submit']{
+    margin-top: 10px;
+}
+#kontaktForm form div {
+    width: 420px;
+}
+#kontaktForm form label {
+    width: 420px;
+    display: block;
+}
+
+/* konec #kontakt */
+
+#footer {
+    background: #3a4e63;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+#footerMenuBg {
+    background: url(../images/stripeOpacity50.png);
+}
+#footerMenu ul {
+    list-style-type: none;
+    padding-left: 0px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+#footerMenu li {
+    display: inline;
+    padding-left: 10px;
+}
+#footerMenu li.first{
+    padding-left: 0px;
+}
+#footerMenu li a {
+    color: #fff;
+}

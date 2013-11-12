@@ -1,0 +1,22 @@
+acme_front_homepage:
+    pattern:  /
+    defaults: { _controller: AcmeFrontBundle:Default:index }
+
+#acme_front_homepage_multilang:
+#    path:      /{_locale}/
+#    defaults:  { _controller: AcmeFrontBundle:Default:index, _locale: en }
+#    requirements:
+#        _locale: en|cz
+
+    
+acme_front_texts:
+    pattern:  /texts/showAll
+    defaults: { _controller: AcmeFrontBundle:Texts:showAll }
+    
+acme_front_email:
+    pattern: /mail/send/{jmeno}/{email}/{text}
+    defaults: { _controller: AcmeFrontBundle:Mail:send }
+    
+acme_front_registration:
+    pattern: /registration/
+    defaults: { _controller: AcmeFrontBundle:Registration:registration}

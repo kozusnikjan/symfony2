@@ -1,0 +1,7 @@
+#account_registration:
+#   pattern:  /registration
+#   defaults: { _controller: AcmeAccountBundle:Account:registration }
+
+account_create:
+   pattern:  /registration/create
+   defaults: { _controller: AcmeAccountBundle:Account:create }

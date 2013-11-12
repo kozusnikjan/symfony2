@@ -1,0 +1,39 @@
+acme_admin_homepage:
+    pattern:  /admin/
+    defaults: { _controller: AcmeAdminBundle:Default:index }
+
+    
+# texts    
+acme_admin_text:
+    pattern:  /admin/text/showAll
+    defaults: { _controller: AcmeAdminBundle:Text:showAll }    
+    
+acme_admin_text_add:
+    pattern:  /admin/text/addText
+    defaults: { _controller: AcmeAdminBundle:Text:addText }        
+
+
+# tasks
+acme_admin_task:
+    pattern:  /admin/task
+    defaults: { _controller: AcmeAdminBundle:Task:showAll }  
+    
+acme_admin_task_add:
+    pattern:  /admin/task/addTask
+    defaults: { _controller: AcmeAdminBundle:Task:addTask } 
+
+
+# messages    
+acme_admin_messages_web:
+    pattern:  /admin/messages/web
+    defaults: { _controller: AcmeAdminBundle:Messages:showAllWeb } 
+
+
+# newsletter    
+acme_admin_newsletter_users:
+    pattern: /admin/newsletter/users
+    defaults: { _controller: AcmeAdminBundle:Newsletter:showAllUsers}
+acme_admin_newsletter_texts:
+    pattern: /admin/newsletter/texts
+    defaults: { _controller: AcmeAdminBundle:Newsletter:showAllTexts}
+    

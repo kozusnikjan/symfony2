@@ -1,0 +1,207 @@
+/* 
+    Document   : style.css
+    Created on : 7.10.2013, 20:24:03
+    Author     : Jan
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+.left {
+    float: left;
+}
+.right {
+    float: right;
+}
+.clear {
+    clear: both;
+}
+img {
+    border: none;
+}
+h1, h2 {
+    padding: 0;
+    margin: 0;
+    color: #c5d52b;
+    font-weight: normal;
+}
+a {
+    color: #c5d52b;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+
+body {
+    margin: 0 auto;
+    font-family: Open Sans;
+    color: #0c0c0c;
+}
+
+#bundle {
+    margin: 0 auto;
+}
+
+
+/* centrovani */
+#center, #footer{
+    width: 978px;
+    margin: 0 auto;
+}
+
+
+#header {
+    padding: 5px 10px;
+}
+/*
+#wrapperTop
+*/
+#wrapperTop {
+    background: url('../../../bundles/acmeadminbundle/images/grayBg.png') #313136;
+    border-bottom: 2px solid #c5d52b;
+    color: #909090;
+}
+
+#header{
+    padding-top: 10px;
+    color: #f7f7f7;
+}
+#header h1 {
+    padding: 0;
+    margin: 0;
+}
+
+#header #loginInfo {
+    margin-top: 15px;
+}
+#header #loginInfo a {
+
+}
+
+
+/*
+#wrapperContent
+*/
+#wrapperCenter {
+}
+#center {
+    background: #f3f3f3;
+}
+
+
+ .sideBar {
+    height: 100%;
+    width: 180px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+ .sideBar.left {
+    /*border-right: 1px solid #010101;*/
+    background: url('../../../bundles/acmeadminbundle/images/grayBg.png') #313136;
+    height: 100%;
+}
+.sideBar.left .nav a{
+    background: #515151;
+    color: #fff;
+}
+.sideBar.left .nav a:hover {
+    color: #c5d52b;
+}
+
+
+ .sideBar.right {
+    padding-left: 5px;
+    /*border-left: 1px solid #010101;*/
+}
+
+/*
+#content
+*/
+
+#content {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    /*width: 640px;   normalne 650px; -10px kvuli paddingu */
+    /*margin: 0 auto;*/
+    /*float: left;*/
+}
+#content .item {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f8f8f8;
+/*    float: left;*/
+    margin: 0 auto;
+    width: 640px;
+}
+#content .columns .item {
+    width: auto;
+    float: left;
+    margin-right: 10px;
+}
+#content .item .header {
+    width: 100%;
+    background: url('../../../bundles/acmeadminbundle/images/grayBg.png') #313136;
+    padding-top: 10px;
+    padding-bottom: 2px;
+}
+#content .item .header h2 {
+    padding-left: 5px;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+#content .item .content {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#content .item .content table {
+    border-collapse: collapse;
+    width: 100%;
+}
+#content .item .content table tr {
+
+}
+#content .item .content table tr:first-child {
+    font-size: 18px;  
+}
+#content .item .content table tr:nth-child( 2n + 1 ) {
+    background: #fff;
+}
+
+
+
+#content form {
+}
+#content form input, #content form textarea {
+    width: 624px;
+    margin-bottom: 10px;
+}
+#content form input {
+    height: 23px;
+}
+#content form textarea {
+    height: 80px;
+    padding: 1px;
+    resize: none;
+}
+#content form label {
+    font-size: 15px;
+}
+/*
+#wrapperFooter
+*/
+#wrapperFooter {
+    background: url('../../../bundles/acmeadminbundle/images/grayBg.png') #313136;
+    border-top: 1px solid #c5d52b;
+}
+#footer {
+    color: #f7f7f7;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+

@@ -1,0 +1,3 @@
+acme_entity_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: AcmeEntityBundle:Default:index }

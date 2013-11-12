@@ -1,0 +1,25 @@
+login:
+    pattern:   /login
+    defaults:  { _controller: AcmeSecurityBundle:Security:login }
+login_check:
+    pattern:   /login_check
+logout:
+    path:   /logout    
+
+
+acme_account:
+    resource: "@AcmeAccountBundle/Resources/config/routing.yml"
+    prefix:   /  
+acme_front:
+    resource: "@AcmeFrontBundle/Resources/config/routing.yml"
+    prefix:   /
+
+acme_admin:
+    resource: "@AcmeAdminBundle/Resources/config/routing.yml"
+    prefix:   /
+
+acme_entity:
+    resource: "@AcmeEntityBundle/Resources/config/routing.yml"
+    prefix:   /
+
+

@@ -1,0 +1,129 @@
+imports:
+    - { resource: parameters.yml }
+    - { resource: security.yml }
+
+framework:
+    #esi:             ~
+    #translator:      { fallback: %locale% }
+    secret:          %secret%
+    router:
+        resource: "%kernel.root_dir%/config/routing.yml"
+        strict_requirements: ~
+    form:            ~
+    csrf_protection: ~
+    validation:      { enable_annotations: true }
+    templating:
+        engines: ['twig','php']
+        #assets_version: SomeVersionScheme
+    default_locale:  cz_CZ
+    trusted_proxies: ~
+    session:         ~
+    fragments:       ~
+    http_method_override: true
+    translator: { fallback: cz_CZ }
+
+# Twig Configuration
+twig:
+    debug:            %kernel.debug%
+    strict_variables: %kernel.debug%
+
+# Assetic Configuration
+assetic:
+    debug:          %kernel.debug%
+    use_controller: false
+    bundles:        [ ]
+    #java: /usr/bin/java
+    filters:
+        cssrewrite: ~
+        #closure:
+        #    jar: %kernel.root_dir%/Resources/java/compiler.jar
+        #yui_css:
+        #    jar: %kernel.root_dir%/Resources/java/yuicompressor-2.4.7.jar
+
+# Doctrine Configuration
+doctrine:
+    dbal:
+        driver:   %database_driver%
+        host:     %database_host%
+        port:     %database_port%
+        dbname:   %database_name%
+        user:     %database_user%
+        password: %database_password%
+        charset:  UTF8
+        # if using pdo_sqlite as your database driver, add the path in parameters.yml
+        # e.g. database_path: %kernel.root_dir%/data/data.db3
+        # path:     %database_path%
+
+    orm:
+        auto_generate_proxy_classes: %kernel.debug%
+        auto_mapping: true
+#        filters:
+#                    softdeleteable:
+#                        class: Gedmo\SoftDeleteable\Filter\SoftDeleteableFilter
+#                        enabled: true
+        mappings:
+                    gedmo_translatable:
+                        type: annotation
+                        prefix: Gedmo\Translatable\Entity
+                        dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Translatable/Entity"
+                        alias: GedmoTranslatable # this one is optional and will default to the name set for the mapping
+                        is_bundle: false
+                    gedmo_translator:
+                        type: annotation
+                        prefix: Gedmo\Translator\Entity
+                        dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Translator/Entity"
+                        alias: GedmoTranslator # this one is optional and will default to the name set for the mapping
+                        is_bundle: false
+                    gedmo_loggable:
+                        type: annotation
+                        prefix: Gedmo\Loggable\Entity
+                        dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Loggable/Entity"
+                        alias: GedmoLoggable # this one is optional and will default to the name set for the mapping
+                        is_bundle: false
+                    gedmo_tree:
+                        type: annotation
+                        prefix: Gedmo\Tree\Entity
+                        dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Tree/Entity"
+                        alias: GedmoTree # this one is optional and will default to the name set for the mapping
+                        is_bundle: false
+
+stof_doctrine_extensions:
+    default_locale: cz_CZ
+
+    # Only used if you activated the Uploadable extension
+    uploadable:
+        # Default file path: This is one of the three ways you can configure the path for the Uploadable extension
+        default_file_path:       %kernel.root_dir%/../web/uploads
+
+        # Mime type guesser class: Optional. By default, we provide an adapter for the one present in the HttpFoundation component of Symfony
+        mime_type_guesser_class: Stof\DoctrineExtensionsBundle\Uploadable\MimeTypeGuesserAdapter
+
+        # Default file info class implementing FileInfoInterface: Optional. By default we provide a class which is prepared to receive an UploadedFile instance.
+        default_file_info_class: Stof\DoctrineExtensionsBundle\Uploadable\UploadedFileInfo
+    orm:
+        default:
+            tree: true
+            timestampable: true
+            uploadable: true
+            
+        
+# Swiftmailer Configuration
+swiftmailer:
+      transport:            smtp
+      username:             info@poridsiweb.cz
+      password:             w48565_1994
+      host:                 smtp-48565.m65.wedos.net
+      port:                 465
+      encryption:           ssl
+ 
+
+services:
+    # Doctrine Extension listeners to handle behaviors
+    gedmo.listener.translatable:
+        class: Gedmo\Translatable\TranslatableListener
+        tags:
+            - { name: doctrine.event_subscriber, connection: default }
+        calls:
+            - [ setAnnotationReader, [ @annotation_reader ] ]
+            - [ setDefaultLocale, [ cz_CZ ] ]
+            - [ setTranslationFallback, [ true ] ]

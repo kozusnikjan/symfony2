@@ -1,0 +1,71 @@
+body {
+    font-family: Open Sans;
+    background: #f3f3f3;
+}
+.left {
+    float: left;
+}
+.right {
+    float: right;
+}
+.clear {
+    clear: both;
+}
+a {
+    color: #c5d52b;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+#loginFormWrapper {
+    color: #c5d52b;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 50px;
+}
+
+
+#loginForm {
+    color: #909090;
+    font-weight: normal;
+    padding: 10px 10px;
+    background: url('../../../bundles/acmeadminbundle/images/grayBg.png') #313136;
+    border: 1px solid #010101;
+    width: 400px;
+    /*height: 200px;*/
+    margin: 0 auto;
+    border-radius: 2px;
+}
+
+#loginForm #info {
+    font-size: 12px;
+}
+
+#loginForm h1 {
+    margin-bottom: 0px;
+    margin-top: 0px;
+    font-size: 24px;
+    color: #c5d52b;
+}
+
+input[type='text'], input[type='password'], label, button{
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}
+
+label {
+    margin-top: 10px;
+}
+input[type='text'], input[type='password']{
+    width: 350px;
+    height: 30px;
+    margin-bottom: 20px;
+}
+button {
+    margin-top: 10px;
+    width: 100px;
+    height: 35px;
+}

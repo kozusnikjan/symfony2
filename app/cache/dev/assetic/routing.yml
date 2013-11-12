@@ -1,0 +1,5 @@
+_assetic:
+    resource: .
+    type: assetic
+_app:
+    resource: 'F:/Soubory/xampp/htdocs/poridsiweb.cz/www/domains/kozusnikjan.com/Symfony/app/config/routing_dev.yml'

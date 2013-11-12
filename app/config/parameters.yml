@@ -1,0 +1,27 @@
+# This file is auto-generated during the composer install
+parameters:
+#    database_driver: pdo_mysql
+#    database_host: localhost
+#    database_port: null
+#    database_name: d48565_symfony
+#    database_user: root
+#    database_password: 
+#    mailer_transport: smtp
+#    mailer_host: 127.0.0.1
+#    mailer_user: null
+#    mailer_password: null
+#    locale: cz_CZ
+#    secret: 0878ce2c6eaa0a23ef458fe1bb397618132ac058
+    
+    database_driver: pdo_mysql
+    database_host: wm40.wedos.net
+    database_port: null
+    database_name: d48565_symfony
+    database_user: a48565_symfony
+    database_password: a48565_1994
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1
+    mailer_user: null
+    mailer_password: null
+    locale: cz_CZ
+    secret: 0878ce2c6eaa0a23ef458fe1bb397618132ac058
