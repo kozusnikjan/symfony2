@@ -23,6 +23,11 @@ class Task {
      */
     protected $name;
     
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    protected $startDate;
+    
      /**
      * @ORM\Column(type="datetime")
      */
@@ -37,6 +42,18 @@ class Task {
      * @ORM\Column(type="integer")
      */
     protected $author;
+    
+    /**
+     * 
+     * @ORM\Column(type="integer")
+     */
+    protected $forId;
+    
+    /**
+     * 
+     * @ORM\Column(type="integer")
+     */
+    protected $done;
     
     public function getName(){
         return $this->name;
@@ -111,5 +128,76 @@ class Task {
     public function getAuthor()
     {
         return $this->author;
+    }
+
+   
+
+    /**
+     * Set for_id
+     *
+     * @param integer $forId
+     * @return Task
+     */
+    public function setForId($forId)
+    {
+        $this->forId = $forId;
+    
+        return $this;
+    }
+
+    /**
+     * Get for_id
+     *
+     * @return integer 
+     */
+    public function getForId()
+    {
+        return $this->forId;
+    }
+
+    /**
+     * Set startDate
+     *
+     * @param \DateTime $startDate
+     * @return Task
+     */
+    public function setStartDate($startDate)
+    {
+        $this->startDate = $startDate;
+    
+        return $this;
+    }
+
+    /**
+     * Get startDate
+     *
+     * @return \DateTime 
+     */
+    public function getStartDate()
+    {
+        return $this->startDate;
+    }
+
+    /**
+     * Set done
+     *
+     * @param integer $done
+     * @return Task
+     */
+    public function setDone($done)
+    {
+        $this->done = $done;
+    
+        return $this;
+    }
+
+    /**
+     * Get done
+     *
+     * @return integer 
+     */
+    public function getDone()
+    {
+        return $this->done;
     }
 }

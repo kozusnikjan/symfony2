@@ -29,31 +29,35 @@ class TextTranslation extends AbstractPersonalTranslation
     }
 
     /**
-     * @ORM\ManyToOne(targetEntity="Text", inversedBy="translations")
+     * @ORM\ManyToOne(targetEntity="Acme\EntityBundle\Entity\Text", inversedBy="translations")
      * @ORM\JoinColumn(name="object_id", referencedColumnName="id", onDelete="CASCADE")
      */
     protected $object;
     /**
-     * @var integer
+     * @ORM\Column(type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue
      */
     protected $id;
 
     /**
      * @var string
+	 * @ORM\Column(length=64)
      */
     protected $locale;
 
     /**
      * @var string
+	 * @ORM\Column(length=64)
      */
     protected $field;
 
     /**
      * @var string
+	 * @ORM\Column(length=64)
      */
     protected $content;
-
-
+    
     /**
      * Get id
      *
@@ -153,5 +157,18 @@ class TextTranslation extends AbstractPersonalTranslation
     public function getObject()
     {
         return $this->object;
+    }
+
+    /**
+     * Set id
+     *
+     * @param integer $id
+     * @return TextTranslation
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    
+        return $this;
     }
 }

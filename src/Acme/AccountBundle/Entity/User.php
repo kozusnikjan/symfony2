@@ -48,14 +48,13 @@ class User implements AdvancedUserInterface, \Serializable
     private $isActive;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Role", inversedBy="users")
-     *
+     * @ORM\OneToMany(targetEntity="UserRole", mappedBy="user", cascade={"all"})
      */
-    private $roles;
+    private $userRoles;
     
     public function __construct()
     {
-        $this->roles = new ArrayCollection();
+        $this->userRoles = new ArrayCollection();
     }
 
     /**
@@ -87,13 +86,27 @@ class User implements AdvancedUserInterface, \Serializable
      */
     public function getRoles()
     {
-        return $this->roles->toArray();
+		$roles = array();
+		foreach ($this->userRoles as $userRole) {
+			$roles[] = $userRole->getRole();
+		}
+        return $roles;
     }
 
-    public function setRoles($roles)
+	public function addUserRole($userRole)
+	{
+		$this->userRoles->add($userRole);
+		return $this;
+	}
+	
+	public function getUserRoles()
+	{
+		return $this->userRoles;
+	}
+	
+    public function setUserRoles($userRoles)
     {
-        $this->roles = $roles;
-        
+        $this->userRoles = $userRoles;
         return $this;
     }
     
@@ -263,5 +276,15 @@ class User implements AdvancedUserInterface, \Serializable
     public function removeRole(\Acme\AccountBundle\Entity\UserRole $roles)
     {
         $this->roles->removeElement($roles);
+    }
+
+    /**
+     * Remove userRoles
+     *
+     * @param \Acme\AccountBundle\Entity\UserRole $userRoles
+     */
+    public function removeUserRole(\Acme\AccountBundle\Entity\UserRole $userRoles)
+    {
+        $this->userRoles->removeElement($userRoles);
     }
 }

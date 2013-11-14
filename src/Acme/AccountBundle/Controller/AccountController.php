@@ -8,8 +8,9 @@ use Symfony\Component\HttpFoundation\Request;
 
 use Acme\AccountBundle\Form\Type\RegistrationType;
 use Acme\AccountBundle\Form\Model\Registration;
-//use Acme\AccountBundle\Entity\User;
+use Acme\AccountBundle\Entity\User;
 use Acme\AccountBundle\Entity\UserRole;
+use Acme\AccountBundle\Entity\Role;
 
 class AccountController extends Controller
 {
@@ -17,7 +18,7 @@ class AccountController extends Controller
     
     public function createAction(Request $request)
     {  
-        
+
     $em = $this->getDoctrine()->getManager();
     
     $registrationForm = $this->createForm(new RegistrationType(), new Registration());
@@ -44,18 +45,22 @@ class AccountController extends Controller
             
         $user->setPassword($password);
 
+//		$role = new Role();
+//		$role->setName('User');
+//		$role->setRole('ROLE_USER');
+
+              
+        $role = $this->getDoctrine()
+        ->getRepository('AcmeAccountBundle:Role')
+        ->find(2);
         
-        
-        
+        $userRole = new UserRole();
+        $userRole->setRole($role);
+		
+	$user->addUserRole($userRole);
+
         $em->persist($user);
         $em->flush();
-        
-        $role = new UserRole();
-        $role->setUserId($user->getId());
-        $role->setRoleId(2);
-        $em->persist($role);
-        $em->flush();
-        
         
         return $this->redirect($this->generateUrl('acme_front_homepage'));
     }

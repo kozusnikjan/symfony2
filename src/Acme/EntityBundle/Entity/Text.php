@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
+ * @ORM\Table(name="texts")
  * @Gedmo\TranslationEntity(class="Acme\EntityBundle\Entity\Translation\TextTranslation")
  */
 class Text
@@ -39,7 +40,7 @@ class Text
     
     /**
      * @ORM\OneToMany(
-     *   targetEntity="TextTranslation",
+     *   targetEntity="Acme\EntityBundle\Entity\Translation\TextTranslation",
      *   mappedBy="object",
      *   cascade={"persist", "remove"}
      * )
@@ -136,10 +137,10 @@ class Text
     /**
      * Add translations
      *
-     * @param \Acme\EntityBundle\Entity\TextTranslation $translations
+     * @param \Acme\EntityBundle\Entity\Translation\TextTranslation $translations
      * @return Text
      */
-    public function addTranslation(\Acme\EntityBundle\Entity\TextTranslation $translations)
+    public function addTranslation(\Acme\EntityBundle\Entity\Translation\TextTranslation $translations)
     {
         $this->translations[] = $translations;
     

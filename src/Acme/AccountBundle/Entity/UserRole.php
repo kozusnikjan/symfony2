@@ -14,19 +14,22 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class UserRole
 {
-    /** 
-     @ORM\Id
-     @ORM\Column(type="integer")
-     @ORM\ManyToOne(targetEntity="User", cascade={"all"})
+    /**
+     * @ORM\Column(type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $user_id;
+    private $id;
+
+    /** 
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="userRoles", cascade={"all"})
+     */
+    private $user;
     
     /**
-     @ORM\Id 
-     @ORM\Column(type="integer")
-     @ORM\ManyToOne(targetEntity="Role", cascade={"all"})
+     * @ORM\ManyToOne(targetEntity="Role", cascade={"all"})
      */
-    private $role_id;
+    private $role;
 
 
 
@@ -36,10 +39,10 @@ class UserRole
      * @param integer $userId
      * @return UserRole
      */
-    public function setUserId($userId)
+    public function setUser($user)
     {
-        $this->user_id = $userId;
-    
+        $this->user = $user;
+
         return $this;
     }
 
@@ -48,9 +51,9 @@ class UserRole
      *
      * @return integer 
      */
-    public function getUserId()
+    public function getUser()
     {
-        return $this->user_id;
+        return $this->user;
     }
 
     /**
@@ -59,9 +62,9 @@ class UserRole
      * @param integer $roleId
      * @return UserRole
      */
-    public function setRoleId($roleId)
+    public function setRole($role)
     {
-        $this->role_id = $roleId;
+        $this->role = $role;
     
         return $this;
     }
@@ -71,8 +74,18 @@ class UserRole
      *
      * @return integer 
      */
-    public function getRoleId()
+    public function getRole()
     {
-        return $this->role_id;
+        return $this->role;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 }
