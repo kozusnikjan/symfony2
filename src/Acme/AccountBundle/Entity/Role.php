@@ -29,9 +29,14 @@ class Role implements RoleInterface
      */
     private $role;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="User", mappedBy="roles")
+     */
+    private $users;
+
     public function __construct()
     {
-
+        $this->users = new ArrayCollection();
     }
 
     /**
@@ -41,7 +46,8 @@ class Role implements RoleInterface
     {
         return $this->role;
     }
-
+    
+    
 
     /**
      * Get id
@@ -87,5 +93,38 @@ class Role implements RoleInterface
         $this->role = $role;
     
         return $this;
+    }
+
+    /**
+     * Add users
+     *
+     * @param \Acme\AccountBundle\Entity\User $users
+     * @return Role
+     */
+    public function addUser(\Acme\AccountBundle\Entity\User $users)
+    {
+        $this->users[] = $users;
+    
+        return $this;
+    }
+
+    /**
+     * Remove users
+     *
+     * @param \Acme\AccountBundle\Entity\User $users
+     */
+    public function removeUser(\Acme\AccountBundle\Entity\User $users)
+    {
+        $this->users->removeElement($users);
+    }
+
+    /**
+     * Get users
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getUsers()
+    {
+        return $this->users;
     }
 }
