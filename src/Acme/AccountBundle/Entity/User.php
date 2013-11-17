@@ -1,19 +1,18 @@
 <?php
-// src/Acme/AccountBundle/Entity/User.php
+// src/Acme/AccounBundle/Entity/User.php
 namespace Acme\AccountBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 use Doctrine\Common\Collections\ArrayCollection;
-
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * Acme\AccountBundle\Entity\User
+ * Acme\UserBundle\Entity\User
  *
  * @ORM\Table(name="acme_users")
  * @ORM\Entity(repositoryClass="Acme\AccountBundle\Entity\UserRepository")
  */
-class User implements AdvancedUserInterface, \Serializable
+class User implements UserInterface, \Serializable
 {
     /**
      * @ORM\Column(type="integer")
@@ -33,7 +32,7 @@ class User implements AdvancedUserInterface, \Serializable
     private $salt;
 
     /**
-     * @ORM\Column(type="string", length=40)
+     * @ORM\Column(type="string", length=64)
      */
     private $password;
 
@@ -48,13 +47,16 @@ class User implements AdvancedUserInterface, \Serializable
     private $isActive;
 
     /**
-     * @ORM\OneToMany(targetEntity="UserRole", mappedBy="user", cascade={"all"})
+     * @ORM\ManyToMany(targetEntity="Role", inversedBy="users")
+     *
      */
-    private $userRoles;
+    private $roles;
     
     public function __construct()
     {
-        $this->userRoles = new ArrayCollection();
+        $this->isActive = true;
+        $this->salt = md5(uniqid(null, true));
+        $this->roles = new ArrayCollection();
     }
 
     /**
@@ -86,30 +88,9 @@ class User implements AdvancedUserInterface, \Serializable
      */
     public function getRoles()
     {
-		$roles = array();
-		foreach ($this->userRoles as $userRole) {
-			$roles[] = $userRole->getRole();
-		}
-        return $roles;
+        return $this->roles->toArray();
     }
 
-	public function addUserRole($userRole)
-	{
-		$this->userRoles->add($userRole);
-		return $this;
-	}
-	
-	public function getUserRoles()
-	{
-		return $this->userRoles;
-	}
-	
-    public function setUserRoles($userRoles)
-    {
-        $this->userRoles = $userRoles;
-        return $this;
-    }
-    
     /**
      * @inheritDoc
      */
@@ -136,6 +117,29 @@ class User implements AdvancedUserInterface, \Serializable
             $this->id,
         ) = unserialize($serialized);
     }
+    
+    
+    public function isAccountNonExpired()
+    {
+        return true;
+    }
+
+    public function isAccountNonLocked()
+    {
+        return true;
+    }
+
+    public function isCredentialsNonExpired()
+    {
+        return true;
+    }
+
+    public function isEnabled()
+    {
+        return $this->isActive;
+    }
+    
+    
 
     /**
      * Get id
@@ -231,37 +235,14 @@ class User implements AdvancedUserInterface, \Serializable
     {
         return $this->isActive;
     }
-    
-    public function isAccountNonExpired()
-    {
-        return true;
-    }
-
-    public function isAccountNonLocked()
-    {
-        return true;
-    }
-
-    public function isCredentialsNonExpired()
-    {
-        return true;
-    }
-
-    public function isEnabled()
-    {
-        return $this->isActive;
-    }
-    
-    
-
 
     /**
      * Add roles
      *
-     * @param \Acme\AccountBundle\Entity\UserRole $roles
+     * @param \Acme\AccountBundle\Entity\Role $roles
      * @return User
      */
-    public function addRole(\Acme\AccountBundle\Entity\UserRole $roles)
+    public function addRole(\Acme\AccountBundle\Entity\Role $roles)
     {
         $this->roles[] = $roles;
     
@@ -271,20 +252,10 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * Remove roles
      *
-     * @param \Acme\AccountBundle\Entity\UserRole $roles
+     * @param \Acme\AccountBundle\Entity\Role $roles
      */
-    public function removeRole(\Acme\AccountBundle\Entity\UserRole $roles)
+    public function removeRole(\Acme\AccountBundle\Entity\Role $roles)
     {
         $this->roles->removeElement($roles);
-    }
-
-    /**
-     * Remove userRoles
-     *
-     * @param \Acme\AccountBundle\Entity\UserRole $userRoles
-     */
-    public function removeUserRole(\Acme\AccountBundle\Entity\UserRole $userRoles)
-    {
-        $this->userRoles->removeElement($userRoles);
     }
 }
