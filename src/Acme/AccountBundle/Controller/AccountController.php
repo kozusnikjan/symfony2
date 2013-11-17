@@ -29,37 +29,25 @@ class AccountController extends Controller
     if ($registrationForm->isValid()) {
         
         $registration = $registrationForm->getData();
-       
-        
+
         $user = $registration->getUser();
         
         $user->setSalt($this->generateSalt());
         $user->setIsActive(1);
-        
-    
-        
+       
         $factory = $this->get('security.encoder_factory');
 
         $encoder = $factory->getEncoder($user);
         $password = $encoder->encodePassword($user->getPassword(), $user->getSalt());
             
         $user->setPassword($password);
-
-//		$role = new Role();
-//		$role->setName('User');
-//		$role->setRole('ROLE_USER');
-
-              
+   
         $role = $this->getDoctrine()
         ->getRepository('AcmeAccountBundle:Role')
-        ->find(2);
-        
-        $userRole = new UserRole();
-        $userRole->setRole($role);
-		
-	$user->addUserRole($userRole);
+        ->find(3);	
+	$user->addRole($role);
 
-        $em->persist($user);
+        $em->persist($user);  
         $em->flush();
         
         return $this->redirect($this->generateUrl('acme_front_homepage'));
